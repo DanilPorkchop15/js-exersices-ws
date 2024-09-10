@@ -15,7 +15,7 @@
 // В приведённом выше коде f – функция с одним аргументом, но ваше решение должно передавать все аргументы и контекст this.
 
 function delay(func, ms) {
-  return function {
+  return function () {
     setTimeout(() => func.apply(this, arguments), ms);
   }
 }
