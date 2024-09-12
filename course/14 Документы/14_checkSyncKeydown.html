@@ -1,0 +1,42 @@
+<!-- Создайте функцию runOnKeys(func, code1, code2, ... code_n), 
+которая запускает func при одновременном нажатии клавиш с кодами code1, code2, …, code_n.
+
+Например, код ниже выведет alert
+при одновременном нажатии клавиш "Q" и "W" (в любом регистре, в любой раскладке) -->
+
+<!DOCTYPE HTML>
+<html>
+<body>
+
+  <p>Нажмите "Q" и "W" вместе (язык значения не играет).</p>
+
+  <script>
+    function runOnKeys (callback, ...keyCodes) {
+      const pressedKeys = new Set();
+
+      function onKeyDown (e) {
+        pressedKeys.add(e.code)
+        let isPassed = false
+        for (const keyCode of keyCodes) {
+          if (!pressedKeys.has(keyCode)) return
+        }
+        pressedKeys.clear();
+        callback()
+      }
+
+      document.addEventListener("keydown", onKeyDown)
+      document.addEventListener("keyup", (e) => {
+        pressedKeys.delete(e.code)
+      })
+
+    }
+    runOnKeys(
+      () => alert("Привет!"),
+      "KeyQ",
+      "KeyW"
+    );
+  </script>
+
+</body>
+
+</html>
