@@ -7,9 +7,12 @@
 // asyncTimeout(1000).then(() => console.log(2));
 
 function asyncTimeout(timeout = 0) {
-  return  new Promise((resolve) => setTimeout(resolve, timeout))
+  return new Promise((resolve) => setTimeout(resolve, timeout));
 }
 
-setTimeout(() => console.log(2), 1111)
-asyncTimeout(2222).then(() => console.log(3))
+
+setTimeout(() => console.log(2), 1111);
+
+asyncTimeout(2222).then(() => console.log(3));
+
 console.log(1);
