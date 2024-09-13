@@ -67,7 +67,6 @@ console.log(`${set}`);
 
 // const wrongSet = new MySet(1231);
 
-
 function MySet2(arr) {
   let set = [];
 
@@ -78,14 +77,14 @@ function MySet2(arr) {
     throw new TypeError("Constructor must accept an array!");
   }
 
-  this.add = function(el) {
+  this.add = function (el) {
     if (!set.includes(el)) {
       set.push(el);
       this.size++;
     }
   };
 
-  this.delete = function(el) {
+  this.delete = function (el) {
     const index = set.indexOf(el);
     if (index !== -1) {
       set.splice(index, 1);
@@ -93,28 +92,24 @@ function MySet2(arr) {
     }
   };
 
-  this.toString = function() {
+  this.toString = function () {
     return `{${set.join(", ")} size: ${this.size}}`;
   };
 
-  this.clear = function() {
+  this.clear = function () {
     set = [];
     this.size = 0;
   };
 }
 
 const mySet = new MySet2([0, 1, 2, 3, 4]);
-console.log(`${mySet}`); 
+console.log(`${mySet}`);
 
 mySet.add(5);
-console.log(mySet.toString()); 
+console.log(mySet.toString());
 
 mySet.delete(2);
-console.log(mySet.toString()); 
+console.log(mySet.toString());
 
 mySet.clear();
-console.log(mySet.toString()); 
-
-
-
-
+console.log(mySet.toString());
