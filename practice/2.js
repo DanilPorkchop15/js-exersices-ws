@@ -10,6 +10,7 @@
 // shallowEquals({ a: () => {} }, { a: () => {} }); // false
 
 function shallowEquals(obj1, obj2) {
+  if (obj2.length > obj1.length) return false;
   for (const key in obj1) {
     if (obj1[key] !== obj2[key]) return false;
   }
