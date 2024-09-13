@@ -10,7 +10,6 @@
 
 function pipe () {
   const funcs = [...arguments];
-  console.log(funcs)
   return function (payload) {
     return funcs.reduce((acc, func) => acc = func(acc), payload ? payload : {})
   }
