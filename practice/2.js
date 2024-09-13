@@ -10,7 +10,8 @@
 // shallowEquals({ a: () => {} }, { a: () => {} }); // false
 
 function shallowEquals(obj1, obj2) {
-  if (obj2.length > obj1.length) return false;
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+
   for (const key in obj1) {
     if (obj1[key] !== obj2[key]) return false;
   }
@@ -18,6 +19,7 @@ function shallowEquals(obj1, obj2) {
 }
 
 console.log(shallowEquals({ a: 1, b: "2"}, { a: 1, b: "2" })); 
+console.log(shallowEquals({ a: 1, b: "2"}, { a: 1, b: "2" , c:3})); 
 console.log(shallowEquals({ a: 0 }, { a: undefined }));
 console.log(shallowEquals({ a: {} }, { a: {} }));
 console.log(shallowEquals({ a: [] }, { a: [] }));
