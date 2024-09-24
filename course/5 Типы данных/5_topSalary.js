@@ -15,3 +15,13 @@ function multiplyNumeric(obj) {
   }
   return maxName;
 }
+
+const topSalary = (salaries) => Object.entries(salaries).reduce((maxName, [name, salary]) => salary > maxName[1] ? [name, salary] : maxName, [null, 0])[0]
+
+const salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+
+console.log(topSalary(salaries));
