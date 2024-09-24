@@ -8,8 +8,12 @@ function* treeIter(tree) {
 }
 
 function findNode(tree, value) {
-  return [...treeIter(tree)].includes(value) ? value : -1;
-}
+  for (const node of treeIter(tree)) {
+    if (node === value) {
+      return node;
+    }
+  }
+  return -1;}
 
 const tree = {
   node: 1,
