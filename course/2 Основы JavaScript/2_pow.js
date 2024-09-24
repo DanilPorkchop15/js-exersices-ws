@@ -17,3 +17,15 @@ function pow(x, n) {
 
 const x = prompt("x?", '');
 const n = prompt("n?", '');
+
+function powRecursive(x, n) {
+  if (n === 1) {
+    return x;
+  } else {
+    return x * powRecursive(x, n - 1);
+  }
+}
+
+function powReduce(x, n) {
+  return Array(n).fill(x).reduce((acc, value) => acc * value);  
+}
