@@ -1,0 +1,44 @@
+<!-- Создайте цветные часы  -->
+<!DOCTYPE HTML>
+<html>
+<body>
+  <div id="clock">
+    <span style="color: red;">hh</span>:<span style="color: green;">mm</span>:<span style="color: blue;">ss</span>
+  
+
+  </div>
+  <!-- клик по этой кнопке вызовет clockStart() -->
+  <input type="button" onclick="clockStart()" value="Старт">
+
+  <!-- клик по этой кнопке вызовет clockStop() -->
+  <input type="button" onclick="clockStop()" value="Стоп">
+  <script>
+    const clock = document.getElementById("clock");
+
+    const hours = clock.children[0];
+    const minutes = clock.children[1];
+    const seconds = clock.children[2];
+
+    let timer = null;
+
+    function clockStart() {
+      timer = setInterval(() => {
+        const date = new Date();
+        const h = date.getHours()
+        const m = date.getMinutes()
+        const s = date.getSeconds()
+        hours.textContent = h < 10 ? "0" + h : h;
+        minutes.textContent = m < 10 ? "0" + m : m;
+        seconds.textContent = s < 10 ? "0" + s : s;
+      }, 1000)
+    }
+
+    function clockStop() {
+      clearInterval(timer)
+      timer = null
+    }
+    
+  </script>
+
+</body>
+</html>

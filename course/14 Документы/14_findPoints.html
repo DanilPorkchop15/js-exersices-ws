@@ -1,0 +1,60 @@
+<!-- В ифрейме ниже располагается документ с зелёным «полем».
+
+Используйте JavaScript, чтобы найти координаты углов, обозначенных стрелками.
+
+В документе уже реализована функциональность, когда при клике на любом месте показываются соответствующие координаты.
+
+
+Ваш код должен при помощи DOM получить четыре пары координат:
+
+верхний левый, внешний угол (это просто).
+нижний правый, внешний угол (тоже просто).
+верхний левый, внутренний угол (чуть сложнее).
+нижний правый, внутренний угол (есть несколько способов, выберите один).
+Координаты, вычисленные вами, должны совпадать с теми, которые возвращаются по клику мыши.
+
+P.S. Код должен работать, если у элемента другие размеры или есть рамка, без привязки к конкретным числам. -->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="index.css">
+  <script>
+    document.onclick = function(e) { // показывает координаты точки клика
+      coords.innerHTML = e.clientX + ':' + e.clientY;
+    };
+  </script>
+</head>
+
+<body>
+
+  Кликните в любом месте для получения координат в контексте окна.
+  <br> Это для тестирования, чтобы проверить результат, который вы получили с помощью JavaScript.
+  <br>
+  <div id="coords">(координаты покажутся здесь)</div>
+
+
+  <div id="field">
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+
+  <div class="triangle-right" style="left:-20px;top:-176px">1</div>
+  <div class="triangle-right" style="left:-10px;top:-178px">3</div>
+  <div class="triangle-right" style="left:190px;top:-40px">4</div>
+  <div class="triangle-right" style="left:200px;top:-42px">2</div>
+
+
+  <script>
+    const field = document.getElementById("field");
+    const coords = field.getBoundingClientRect();
+    alert(`1) ${coords.top} : ${coords.left}`);
+    alert(`2) ${coords.bottom} : ${coords.right}`);
+    alert(`3) ${coords.top - field.clientTop} : ${coords.left - field.clientLeft}`);
+    alert(`4) ${coords.bottom - parseInt(getComputedStyle(field).borderBottomHeight)} : ${coords.right - parseInt(getComputedStyle(field).borderBottomWidth)}`);
+  </script>
+
+</body>
+</html>

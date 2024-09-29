@@ -1,0 +1,69 @@
+<!-- Напишите интерфейс для создания списка.
+
+Для каждого пункта:
+
+Запрашивайте содержимое пункта у пользователя с помощью prompt.
+Создавайте элемент <li> и добавляйте его к <ul>.
+Продолжайте до тех пор, пока пользователь не отменит ввод (нажатием клавиши Esc или введя пустую строку).
+Все элементы должны создаваться динамически.
+
+Если пользователь вводит HTML-теги, они должны обрабатываться как текст. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+    body,
+    html {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #matrix {
+      width: 400px;
+      margin: auto;
+      overflow: auto;
+      text-align: justify;
+    }
+
+    #arrowTop {
+      height: 9px;
+      width: 14px;
+      color: green;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      cursor: pointer;
+    }
+
+    #arrowTop::before {
+      content: '▲';
+    }
+
+  </style>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <div id="matrix">
+    <script>
+      for (let i = 0; i < 2000; i++) document.writeln(i)
+    </script>
+  </div>
+
+  <div id="arrowTop"></div>
+
+  <script>
+    arrowTop.hidden = true
+    document.addEventListener("scroll", (e) => {
+      arrowTop.hidden = (window.pageYOffset < document.body.clientHeight)
+    })
+    arrowTop.onclick = () => {
+      window.scrollTo(0, 0)
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!-- Создайте слайдер:
+
+
+Захватите мышкой синий бегунок и двигайте его.
+
+Важные детали:
+
+Слайдер должен нормально работать при резком движении мыши влево или вправо за пределы полосы. 
+При этом бегунок должен останавливаться чётко в нужном конце полосы.
+При нажатом бегунке мышь может выходить за пределы полосы слайдера,
+но слайдер пусть всё равно работает (это удобно для пользователя). -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="slider" class="slider">
+    <div class="thumb"></div>
+  </div>
+
+  <script>
+
+    let thumb = slider.querySelector(".thumb")
+
+    thumb.addEventListener("mousedown", (e) => {
+      let shiftX = event.clientX - thumb.getBoundingClientRect().left;
+      let thumbTop = thumb.getBoundingClientRect().top;
+      let thumbLeft = thumb.getBoundingClientRect().left;
+
+      thumb.style.position = "absolute";
+      thumb.style.top = thumbTop + "px";
+      thumb.style.left = thumbLeft + "px";
+
+      function move (e) {
+        const moveX = e.pageX - shiftX;
+        if (moveX < slider.offsetLeft) return
+        if(moveX > slider.offsetLeft + slider.offsetWidth - thumb.offsetWidth){
+          return
+        }
+        thumb.style.left = moveX + "px"
+      }
+      function onMouseUp() {
+        document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener('mousemove', move);
+      }
+      document.addEventListener("mouseup", onMouseUp)
+      document.addEventListener("mousemove", move)
+    })
+    slider.ondragstart = function() {
+      return false;
+    };
+  </script>
+
+</body>
+</html>

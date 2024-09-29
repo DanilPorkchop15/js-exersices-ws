@@ -1,0 +1,34 @@
+<!-- 4) Напишите программу на JavaScript для вычисления объема сферы. Форма для вычислений может выглядеть следующим образом: -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #form *{
+        display: block;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" id="form">
+      <p>Input radius value and get volume of a sphere</p>
+      <label for="radius">Radius</label>
+      <input type="number" step="0.001" name="radius"  />
+      <label for="volume">Volume</label>
+      <input type="number" step="0.001" name="volume" value="0.000"/>
+      <button type="submit">Calculate</button>
+    </form>
+    <script>
+      form.onsubmit = () => {
+        if(form.radius.value) {
+          const formula = 4 / 3 * Math.PI * (+form.radius.value) ** 3
+          form.volume.value = Math.round(formula * 1000) / 1000;
+        }
+        return false;
+      }
+    </script>
+  </body>
+</html>
